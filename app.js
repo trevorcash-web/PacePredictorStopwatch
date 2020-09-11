@@ -2,10 +2,10 @@ var currentReading;
 var activeTimer;
 var active;
 var startTime;
-
+//distances hardcoded for now
 const distance = 5000
-
 const lapDist = 1609
+document.querySelector('.estimator-text').innerText = `Current ${distance}m estimate: `
 
 const lapLimit = Math.floor(distance/lapDist)
 
@@ -18,6 +18,8 @@ let lapTimeSeconds = 0;
 let lastLapTimeSeconds = 0;
 
 var starting = 0;
+
+let estimate = 0;
 
 //DOM selectors
 button1 = document.querySelector('.button1');
@@ -88,6 +90,9 @@ button2.addEventListener('click', () =>{
         document.querySelectorAll('.table-time').forEach(element => {element.innerText = '--:--.--'});
         document.querySelectorAll('.table-lap-time').forEach(element => {element.innerText = '--:--.--'});
 
+        //reset estimate
+        document.querySelector('.estimator-time').innerText = '--:--'
+
 
         /////todo: reset all states and values back to normal
         lapCount = 0;
@@ -96,13 +101,14 @@ button2.addEventListener('click', () =>{
     //lap button functionality
     else{
         lapTimeSeconds = time
-        var why = lapTimeSeconds-lastLapTimeSeconds
-        // console.log(why)
         lapCount++
-        //todo: fill in current lap time
-        document.querySelector(`.lap${lapCount} .table-lap-time`).innerText = `${(why).min().pad()}:${(why).sec().pad()}.${(why).mil().pad()}`
+        /////todo: fill in current lap time
+        document.querySelector(`.lap${lapCount} .table-lap-time`).innerText = `${(lapTimeSeconds-lastLapTimeSeconds).min().pad()}:${(lapTimeSeconds-lastLapTimeSeconds).sec().pad()}.${(lapTimeSeconds-lastLapTimeSeconds).mil().pad()}`
         document.querySelector(`.lap${lapCount} .table-time`).innerText = `${lapTimeSeconds.min().pad()}:${lapTimeSeconds.sec().pad()}.${lapTimeSeconds.mil().pad()}`
         //todo: do the math to calculate finish time off pace
+        estimate = (lapTimeSeconds/lapCount)*(distance/lapDist)
+        document.querySelector('.estimator-time').innerText = `${estimate.min().pad()}:${estimate.sec().pad()}`
+
         //hide the button if the lap limit is reached
         if(lapCount == lapLimit){
             button2.style.visibility = 'hidden';
@@ -159,10 +165,10 @@ Number.prototype.min = function() {
     return Math.floor(this/60);
 }
 Number.prototype.sec = function() {
-    return Math.floor((time/60- Math.floor(this/60))*60 );
+    return Math.floor((this/60- Math.floor(this/60))*60 );
 }
 Number.prototype.mil = function() {
-    return Math.floor((time%1)*100);
+    return Math.floor((this%1)*100);
 }
 
 
