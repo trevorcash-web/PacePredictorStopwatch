@@ -15,6 +15,8 @@ let lapCount = 0;
 
 let lapTimeSeconds = 0;
 
+let lastLapTimeSeconds = 0;
+
 var starting = 0;
 
 //DOM selectors
@@ -75,6 +77,7 @@ button2.addEventListener('click', () =>{
     if(!(active)){
         //reset starting value
         starting = 0;
+        lastLapTimeSeconds = 0;
 
         //reset actual stopwatch values
         minutes.innerText = '00'
@@ -83,6 +86,7 @@ button2.addEventListener('click', () =>{
 
         //reset lap times in table
         document.querySelectorAll('.table-time').forEach(element => {element.innerText = '--:--.--'});
+        document.querySelectorAll('.table-lap-time').forEach(element => {element.innerText = '--:--.--'});
 
 
         /////todo: reset all states and values back to normal
@@ -92,15 +96,18 @@ button2.addEventListener('click', () =>{
     //lap button functionality
     else{
         lapTimeSeconds = time
-        console.log(lapTimeSeconds)
+        var why = lapTimeSeconds-lastLapTimeSeconds
+        console.log(why)
         lapCount++
         //todo: fill in current lap time
+        document.querySelector(`.lap${lapCount} .table-lap-time`).innerText = `${(why).min().pad()}:${(why).sec().pad()}.${(why).mil().pad()}bruh`
         document.querySelector(`.lap${lapCount} .table-time`).innerText = `${lapTimeSeconds.min().pad()}:${lapTimeSeconds.sec().pad()}.${lapTimeSeconds.mil().pad()}`
         //todo: do the math to calculate finish time off pace
         //hide the button if the lap limit is reached
         if(lapCount == lapLimit){
             button2.style.visibility = 'hidden';
         }
+        lastLapTimeSeconds = lapTimeSeconds;
 
     }
 });
@@ -112,7 +119,7 @@ button2.addEventListener('click', () =>{
 function startTimer(){
 
     var currentTime = new Date();
-    time = ((currentTime - startTime)+starting)/1000;
+    time = ((currentTime - startTime))/1000+starting;
     //get the time
     min = time.min();
     sec = time.sec();
@@ -131,6 +138,7 @@ function generateSplitSheet(n,lapDist){
             <tr class = 'lap${index}'>
                 <td class = 'table-lap-number'>Lap ${index}</td>
                 <td class = 'table-distance'>${index*lapDist}m</td>
+                <td class = 'table-lap-time'>--:--.--</td>
                 <td class = 'table-time'>--:--.--</td>
             </tr>
         `
