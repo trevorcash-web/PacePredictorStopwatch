@@ -77,7 +77,8 @@ button2.addEventListener('click', () =>{
         minutes.innerText = '00'
         seconds.innerText = '00'
         milliseconds.innerText = '00'
-        //todo: reset all states back to normal
+
+        /////todo: reset all states and values back to normal
         lapCount = 0;
         button1.style.visibility = 'visible'
     }
@@ -86,6 +87,8 @@ button2.addEventListener('click', () =>{
         lapTimeSeconds = time/1000
         console.log(lapTimeSeconds)
         lapCount++
+        //todo: fill in current lap time
+        //todo: do the math to calculate finish time off pace
         //hide the button if the lap limit is reached
         if(lapCount == lapLimit){
             button2.style.visibility = 'hidden';
@@ -106,6 +109,7 @@ function startTimer(){
     min = Math.floor(time/1000/60);
     sec = Math.floor((time/1000/60- min)*60 );
     mil = Math.floor(((time/1000)%1)*100);
+    //replace the html with the time
     minutes.innerText = min.pad();
     seconds.innerText = sec.pad();
     milliseconds.innerText = mil.pad();
