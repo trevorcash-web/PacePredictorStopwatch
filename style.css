@@ -1,24 +1,15 @@
-*{
-    margin: 0;
-}
 .timer{
     display: inline-block;
     margin: auto;
 }
 
 .time{
-    margin-top: 20px;
     text-align: center;
     font-family: monospace;
-    font-size: 80px;
+    font-size: 100px;
 }
 .buttons{
     text-align: center;
-    margin:auto;
-    position: absolute;
-    right: 0%;
-    bottom: 5%;
-
 }
 .button1, .button2{
     border-radius: 50%;
@@ -32,8 +23,4 @@
 }
 .phase1{
     background-color: rgb(132, 207, 19);
-}
-.stopwatch{
-    height: 100vh;
-    position: relative;
 }
