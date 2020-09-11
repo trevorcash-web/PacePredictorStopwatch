@@ -1,0 +1,26 @@
+.timer{
+    display: inline-block;
+    margin: auto;
+}
+
+.time{
+    text-align: center;
+    font-family: monospace;
+    font-size: 100px;
+}
+.buttons{
+    text-align: center;
+}
+.button1, .button2{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    padding: 5px;
+    border: 4px solid black;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+.phase1{
+    background-color: rgb(132, 207, 19);
+}
