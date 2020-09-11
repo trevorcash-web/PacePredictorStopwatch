@@ -73,10 +73,17 @@ button2.addEventListener('click', () =>{
 
     //reset button functionality
     if(!(active)){
+        //reset starting value
         starting = 0;
+
+        //reset actual stopwatch values
         minutes.innerText = '00'
         seconds.innerText = '00'
         milliseconds.innerText = '00'
+
+        //reset lap times in table
+        document.querySelectorAll('.table-time').forEach(element => {element.innerText = '--:--.--'});
+
 
         /////todo: reset all states and values back to normal
         lapCount = 0;
@@ -84,10 +91,11 @@ button2.addEventListener('click', () =>{
     }
     //lap button functionality
     else{
-        lapTimeSeconds = time/1000
+        lapTimeSeconds = time
         console.log(lapTimeSeconds)
         lapCount++
         //todo: fill in current lap time
+        document.querySelector(`.lap${lapCount} .table-time`).innerText = `${lapTimeSeconds.min().pad()}:${lapTimeSeconds.sec().pad()}.${lapTimeSeconds.mil().pad()}`
         //todo: do the math to calculate finish time off pace
         //hide the button if the lap limit is reached
         if(lapCount == lapLimit){
@@ -104,11 +112,11 @@ button2.addEventListener('click', () =>{
 function startTimer(){
 
     var currentTime = new Date();
-    time = (currentTime - startTime)+starting;
+    time = ((currentTime - startTime)+starting)/1000;
     //get the time
-    min = Math.floor(time/1000/60);
-    sec = Math.floor((time/1000/60- min)*60 );
-    mil = Math.floor(((time/1000)%1)*100);
+    min = time.min();
+    sec = time.sec();
+    mil = time.mil();
     //replace the html with the time
     minutes.innerText = min.pad();
     seconds.innerText = sec.pad();
@@ -123,17 +131,30 @@ function generateSplitSheet(n,lapDist){
             <tr class = 'lap${index}'>
                 <td class = 'table-lap-number'>Lap ${index}</td>
                 <td class = 'table-distance'>${index*lapDist}m</td>
-                <td class = 'table-time'>00:00.00</td>
+                <td class = 'table-time'>--:--.--</td>
             </tr>
         `
         
     }
 }
 
-
+//pads zeroes
 Number.prototype.pad = function() {
     var s = String(this);
     if(s.length == 1) {s = '0' + s}
     return s;
-  }
+}
+
+
+//when given the total seconds these will output min, sec, and mil
+Number.prototype.min = function() {
+    return Math.floor(this/60);
+}
+Number.prototype.sec = function() {
+    return Math.floor((time/60- Math.floor(this/60))*60 );
+}
+Number.prototype.mil = function() {
+    return Math.floor((time%1)*100);
+}
+
 
