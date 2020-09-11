@@ -7,6 +7,7 @@
     text-align: center;
     font-family: monospace;
     font-size: 75px;
+    
 }
 .buttons{
     text-align: center;
@@ -23,4 +24,9 @@
 }
 .phase1{
     background-color: rgb(132, 207, 19);
+}
+@media only screen and (min-width: 800px){
+    .time{
+        font-size: 100px;
+    }
 }
