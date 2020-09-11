@@ -7,6 +7,14 @@ const distance = 5000
 
 const lapDist = 1609
 
+const lapLimit = Math.floor(distance/lapDist)
+
+generateSplitSheet(lapLimit, lapDist)
+
+let lapCount = 0;
+
+let lapTimeSeconds = 0;
+
 var starting = 0;
 
 //DOM selectors
@@ -45,6 +53,13 @@ button1.addEventListener('click', () =>{
         button1.style.backgroundColor = 'rgb(132, 207, 19)';
         button2.innerHTML = 'Reset';
 
+        button2.style.visibility = 'visible';
+
+        if(lapLimit == lapCount){
+            button1.style.visibility = 'hidden';
+
+        }
+
         clearInterval(activeTimer);
         starting = time;
 
@@ -62,10 +77,20 @@ button2.addEventListener('click', () =>{
         minutes.innerText = '00'
         seconds.innerText = '00'
         milliseconds.innerText = '00'
+        //todo: reset all states back to normal
+        lapCount = 0;
+        button1.style.visibility = 'visible'
     }
     //lap button functionality
     else{
-        
+        lapTimeSeconds = time/1000
+        console.log(lapTimeSeconds)
+        lapCount++
+        //hide the button if the lap limit is reached
+        if(lapCount == lapLimit){
+            button2.style.visibility = 'hidden';
+        }
+
     }
 });
 
@@ -84,10 +109,21 @@ function startTimer(){
     minutes.innerText = min.pad();
     seconds.innerText = sec.pad();
     milliseconds.innerText = mil.pad();
+}
+function generateSplitSheet(n,lapDist){
+    let lapSheet = document.querySelector('.laps-table')
 
-
-
-
+    for (let index = 1; index <= n; index++) {
+        lapSheet.innerHTML+= 
+        `
+            <tr class = 'lap${index}'>
+                <td class = 'table-lap-number'>Lap ${index}</td>
+                <td class = 'table-distance'>${index*lapDist}m</td>
+                <td class = 'table-time'>00:00.00</td>
+            </tr>
+        `
+        
+    }
 }
 
 
