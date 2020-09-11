@@ -97,10 +97,10 @@ button2.addEventListener('click', () =>{
     else{
         lapTimeSeconds = time
         var why = lapTimeSeconds-lastLapTimeSeconds
-        console.log(why)
+        // console.log(why)
         lapCount++
         //todo: fill in current lap time
-        document.querySelector(`.lap${lapCount} .table-lap-time`).innerText = `${(why).min().pad()}:${(why).sec().pad()}.${(why).mil().pad()}bruh`
+        document.querySelector(`.lap${lapCount} .table-lap-time`).innerText = `${(why).min().pad()}:${(why).sec().pad()}.${(why).mil().pad()}`
         document.querySelector(`.lap${lapCount} .table-time`).innerText = `${lapTimeSeconds.min().pad()}:${lapTimeSeconds.sec().pad()}.${lapTimeSeconds.mil().pad()}`
         //todo: do the math to calculate finish time off pace
         //hide the button if the lap limit is reached
