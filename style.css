@@ -1,5 +1,6 @@
 *{
     margin: 0;
+    box-sizing: border-box;
 }
 .timer{
     display: inline-block;
@@ -37,8 +38,12 @@
     font-family: 'Cutive Mono',monospace;
     letter-spacing: -2px;
 }
+.estimator-time{
+    font-size: 50px;
+    font-weight: bold;
+}
 .laps{
-    font-family:'Cutive Mono', monospace;
+    font-family:'Montserrat', sans-serif;
     width: 80%;
     margin: auto;
     border: solid black 2px;
@@ -49,6 +54,7 @@
     
 }
 th, td{
+    padding: 5px;
 }
 @media only screen and (min-width: 800px){
     .time{
