@@ -1,3 +1,6 @@
+*{
+    margin: 0;
+}
 .timer{
     display: inline-block;
     margin: auto;
@@ -8,6 +11,7 @@
     font-family: 'Cutive Mono', monospace;
     font-size: 75px;
     letter-spacing: -10px;
+    margin: 40px 0;
     
 }
 .buttons{
@@ -25,6 +29,26 @@
 }
 .phase1{
     background-color: rgb(132, 207, 19);
+}
+.estimator{
+    text-align: center;
+    margin: 40px;
+    font-size: 25px;
+    font-family: 'Cutive Mono',monospace;
+    letter-spacing: -2px;
+}
+.laps{
+    font-family:'Cutive Mono', monospace;
+    width: 80%;
+    margin: auto;
+    border: solid black 2px;
+    text-align: center;
+}
+.laps-table{
+    margin: auto;
+    
+}
+th, td{
 }
 @media only screen and (min-width: 800px){
     .time{
