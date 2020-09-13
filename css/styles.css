@@ -28,7 +28,7 @@
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
 }
-.phase1{
+.phase1, .submit-button{
     background-color: rgb(132, 207, 19);
 }
 .estimator{
@@ -61,4 +61,24 @@ th, td{
     .time{
         font-size: 100px;
     }
+}
+
+/* styles for the home page */
+/* Chrome, Safari, Edge, Opera */
+.distance-input {
+  -webkit-appearance: none;
+  margin: 0;
+  -moz-appearance: textfield;
+  width: 50px;
+  
+}
+.input{
+    text-align: center;
+    margin: 20px 0;
+}
+.submit-button{
+    width: auto;
+    padding: 15px 10px;
+    border: solid black 2px;
+    cursor: pointer;
 }
