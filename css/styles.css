@@ -64,6 +64,11 @@ th, td{
 }
 
 /* styles for the home page */
+
+.home{
+    font-family: 'Montserrat', sans-serif;
+}
+
 /* Chrome, Safari, Edge, Opera */
 .distance-input, .time-input {
   -webkit-appearance: none;
