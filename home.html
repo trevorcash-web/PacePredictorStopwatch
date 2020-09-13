@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="templates/stopwatch.html" method="GET">
+        <div>
+            <label for="total">Total distance in meters</label>
+            <input id="total" type="number" name="total" required autofocus>
+            <span class="meters">m</span>
+        </div>
+        <div>
+            <label for="lap">Lap distance in meters</label>
+            <input id="lap" type="number" name="lap" required>
+            <span class="meters">m</span>
+        </div>
+        
+        <input type="submit">
+    </form>
+</body>
+</html>

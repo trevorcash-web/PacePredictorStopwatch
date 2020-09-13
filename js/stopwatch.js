@@ -2,9 +2,12 @@ var currentReading;
 var activeTimer;
 var active;
 var startTime;
-//distances hardcoded for now
-const distance = 4828
-const lapDist = 1609
+//distances are taken from url
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const distance = urlParams.get('total')
+const lapDist = urlParams.get('lap')
+
 document.querySelector('.estimator-text').innerText = `Current ${distance}m estimate: `
 let lapLimit = Math.floor(distance/lapDist)
 if((distance/lapDist)%1 == 0){
