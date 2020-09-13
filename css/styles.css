@@ -65,12 +65,15 @@ th, td{
 
 /* styles for the home page */
 /* Chrome, Safari, Edge, Opera */
-.distance-input {
+.distance-input, .time-input {
   -webkit-appearance: none;
   margin: 0;
   -moz-appearance: textfield;
   width: 50px;
   
+}
+.time-input{
+    width: 30px
 }
 .input{
     text-align: center;

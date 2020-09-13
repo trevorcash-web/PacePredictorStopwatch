@@ -2,11 +2,30 @@ var currentReading;
 var activeTimer;
 var active;
 var startTime;
+
+//DOM selectors
+button1 = document.querySelector('.button1');
+button2 = document.querySelector('.button2');
+
+const minutes = document.querySelector('.minutes');
+const seconds = document.querySelector('.seconds');
+const milliseconds = document.querySelector('.milliseconds');
+
+let min;
+let sec;
+let mil;
+
 //distances are taken from url
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const distance = urlParams.get('total')
 const lapDist = urlParams.get('lap')
+
+// if(urlParams.get('min')!=null||urlParams.get('sec')!=null)
+// {
+//     minutes.innerText = parseInt(urlParams.get('min')).pad();
+//     seconds.innerText = parseInt(urlParams.get('sec')).pad();
+// }
 
 document.querySelector('.estimator-text').innerText = `Current ${distance}m estimate: `
 let lapLimit = Math.floor(distance/lapDist)
@@ -27,17 +46,7 @@ var starting = 0;
 
 let estimate = 0;
 
-//DOM selectors
-button1 = document.querySelector('.button1');
-button2 = document.querySelector('.button2');
 
-const minutes = document.querySelector('.minutes');
-const seconds = document.querySelector('.seconds');
-const milliseconds = document.querySelector('.milliseconds');
-
-let min;
-let sec;
-let mil;
 
 //timing displays
 
