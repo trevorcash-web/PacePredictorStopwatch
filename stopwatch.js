@@ -3,11 +3,14 @@ var activeTimer;
 var active;
 var startTime;
 //distances hardcoded for now
-const distance = 5000
+const distance = 4828
 const lapDist = 1609
 document.querySelector('.estimator-text').innerText = `Current ${distance}m estimate: `
+let lapLimit = Math.floor(distance/lapDist)
+if((distance/lapDist)%1 == 0){
+    lapLimit -= 1;
+}
 
-const lapLimit = Math.floor(distance/lapDist)
 
 generateSplitSheet(lapLimit, lapDist)
 
