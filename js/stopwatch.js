@@ -21,11 +21,11 @@ const urlParams = new URLSearchParams(queryString);
 const distance = urlParams.get('total')
 const lapDist = urlParams.get('lap')
 
-// if(urlParams.get('min')!=null||urlParams.get('sec')!=null)
-// {
-//     minutes.innerText = parseInt(urlParams.get('min')).pad();
-//     seconds.innerText = parseInt(urlParams.get('sec')).pad();
-// }
+if(urlParams.get('min')!=null||urlParams.get('sec')!=null)
+{
+    // minutes.innerText = urlParams.get('min').sPad();
+    // seconds.innerText = urlParams.get('sec').sPad();
+}
 
 document.querySelector('.estimator-text').innerText = `Current ${distance}m estimate: `
 let lapLimit = Math.floor(distance/lapDist)
@@ -173,7 +173,11 @@ Number.prototype.pad = function() {
     if(s.length == 1) {s = '0' + s}
     return s;
 }
-
+String.prototype.sPad = function() {
+    var s = this;
+    if(s.length == 1) {s = '0' + s}
+    return s;
+}
 
 //when given the total seconds these will output min, sec, and mil
 Number.prototype.min = function() {
