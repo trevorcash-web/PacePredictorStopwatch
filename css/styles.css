@@ -57,11 +57,7 @@
 th, td{
     padding: 4px;
 }
-@media only screen and (min-width: 800px){
-    .time{
-        font-size: 100px;
-    }
-}
+
 
 /* styles for the home page */
 
@@ -92,4 +88,13 @@ th, td{
     border-radius: 14px;
     -webkit-appearance: none;
     -moz-appearance: none;
+}
+
+@media (min-width: 600px){
+    .time{
+        font-size: 100px;
+    }
+    .laps{
+        width: 40%;
+    }
 }
